@@ -12,7 +12,6 @@ use App\Http\Controllers\CashBankReportController;
 use App\Http\Controllers\CashFlowController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ConditionController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ProductController;
@@ -41,11 +40,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('stock-purchase-summary', [DashboardController::class, 'stockPurchaseSummary']);
-
-    /* customers endpoints */
-    Route::get('customers/export-excel', [CustomerController::class, 'exportExcel']);
-    Route::apiResource('customers', CustomerController::class);
-    /* customers endpoints */
 
     /* suppliers endpoints */
     Route::get('suppliers/export-excel', [SupplierController::class, 'exportExcel']);
@@ -175,8 +169,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->group(function (): void {
             Route::get('roles', 'searchRole');
             Route::get('users', 'searchUser');
-            Route::get('customers', 'searchCustomer');
-            Route::get('suppliers', 'searchSupplier');
+Route::get('suppliers', 'searchSupplier');
             Route::get('brands', 'searchBrand');
             Route::get('colors', 'searchColor');
             Route::get('conditions', 'searchCondition');
