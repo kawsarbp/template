@@ -1,13 +1,3 @@
 {
-    "Description": "الوصف",
-    "Voucher Payment": "قسيمة الدفع",
-    "Voucher Receipt": "قسيمة الاستلام",
-    "NO": "رقم",
-    "Date": "التاريخ ",
-    "PAID TO": "دفعت ل",
-    "RECEIVED FROM": "تم الاستلام من",
-    "Amount": "المبلغ",
-    "Receiver Sign": "توقيع المستلم",
-    "Payer Sign": "علامة الدافع",
-    "Authorize By": "تخويل بواسطة"
+
 }

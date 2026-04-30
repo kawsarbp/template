@@ -11,11 +11,9 @@ use App\Actions\User\UpdateUserAction;
 use App\Exports\UsersExport;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
-use App\Http\Resources\User\UserPermissionResource;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use App\Traits\WithActiveFilters;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -61,25 +59,6 @@ class UserController extends Controller
         $deleteUserAction->execute($user);
 
         return redirect()->back()->with('success', __('User deleted successfully.'));
-    }
-
-    public function permissions($id): UserPermissionResource
-    {
-        $user = User::findOrFail($id);
-
-        return new UserPermissionResource($user);
-    }
-
-    public function updatePermissions($id, Request $request): RedirectResponse
-    {
-        $request->validate([
-            'permissions' => ['required', 'array', 'min:1'],
-            'permissions.*' => 'required|integer',
-        ]);
-        $user = User::find($id);
-        $user->syncPermissions($request->permissions);
-
-        return redirect()->back()->with('success', __('User permissions updated successfully.'));
     }
 
     public function exportExcel(Request $request): BinaryFileResponse

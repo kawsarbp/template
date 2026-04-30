@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Enums\VoucherType;
-use App\Models\CashVoucher;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
@@ -75,30 +73,6 @@ if (! function_exists('getRelativeUrl')) {
         }
 
         return str_replace(config('app.media_url'), '', $url);
-    }
-}
-
-if (! function_exists('generateVoucherNumber')) {
-    function generateVoucherNumber(int $type, $displayOnly = false): string
-    {
-        $prefix = $type === VoucherType::GENERAL_CASH_IN->value ? 'R' : 'P';
-
-        $lastNumber = CashVoucher::where('voucher_type', $type)
-            ->latest('id')
-            ->value('voucher_number');
-
-        $number = $lastNumber ? ((int) substr($lastNumber, 2)) + 1 : 1;
-
-        if ($displayOnly) {
-            return $prefix.'-'.str_pad((string) $number, 4, '0', STR_PAD_LEFT);
-        }
-
-        $voucher = CashVoucher::create([
-            'voucher_type' => $type,
-            'voucher_number' => $prefix.'-'.str_pad((string) $number, 4, '0', STR_PAD_LEFT),
-        ]);
-
-        return $voucher->voucher_number;
     }
 }
 

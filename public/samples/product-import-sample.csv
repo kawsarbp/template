@@ -1,6 +1,0 @@
-sep=,
-title,sku,brand,model,color,condition,is_active
-iPhone 15 Pro Max 256GB,SKU-IP15PM-256,Apple,iPhone 15 Pro Max,Black,Excellent,1
-Galaxy S24 Ultra 512GB,SKU-GS24U-512,Samsung,Galaxy S24 Ultra,White,Very Good,1
-Pixel 9 Pro 128GB,SKU-PX9P-128,Google,Pixel 9 Pro,Silver,Good,1
-OnePlus 12 256GB,SKU-OP12-256,OnePlus,OnePlus 12,Green,Fair,0
