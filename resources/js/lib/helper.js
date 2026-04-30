@@ -1,5 +1,4 @@
 import axios from "axios";
-import { accountOptions, cashFlowType, ownerApprovalStatus } from "./options";
 
 export const generateParams = (params) => {
     let paramsObj = {};
@@ -92,20 +91,6 @@ export const getStatusLabel = (status) => {
     return status;
 };
 
-export const getCashflowTypeLabel = (type) => {
-    const cashFlowTypeLabel = cashFlowType.find((item) => item.value == type);
-    return cashFlowTypeLabel ? cashFlowTypeLabel.label : type;
-};
-
-export const getAccountLabel = (account) => {
-    const accountLabel = accountOptions.find((item) => item.value == account);
-    return accountLabel ? accountLabel.label : account;
-};
-
-export const getOwnerApprovalLabel = (status) => {
-    const ownerApproval = ownerApprovalStatus.find((item) => item.value == status);
-    return ownerApproval ? ownerApproval.label : status;
-}
 
 
 export const formatDateToYMD = (dateInput) => {

@@ -6,13 +6,12 @@ export default function UserActionButton({
     rowItemData,
     handleEdit,
     handleDelete,
-    handlePermission,
 }) {
     const { permissions } = usePage().props;
     return (
         <div className="flex flex-wrap items-center gap-3">
             {/* Edit Button */}
-            {permissions['update user'] && (
+            {(
                 <Button
                     onClick={(e) => {
                         e.stopPropagation();
@@ -26,7 +25,7 @@ export default function UserActionButton({
             )}
 
             {/* Delete Button */}
-            {permissions['delete user'] && (
+            {(
                 <Button
                     onClick={(e) => {
                         e.stopPropagation();
@@ -39,19 +38,6 @@ export default function UserActionButton({
                     className="p-0"
                 >
                     <Trash2 className="h-2 w-2" />
-                </Button>
-            )}
-
-            {/* Permission Button */}
-            {permissions['update user'] && (
-                <Button
-                    variant="soft"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handlePermission(rowItemData);
-                    }}
-                >
-                    Permission
                 </Button>
             )}
         </div>

@@ -17,7 +17,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/', function () {
         return inertia('DashboardHome');
-    });
+    })->name('dashboard');
 
     /* users related endpoints */
     Route::get('users/export-excel', [UserController::class, 'exportExcel']);

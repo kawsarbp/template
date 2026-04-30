@@ -6,11 +6,6 @@ import {
 } from "lucide-react";
 
 export const navItems = (permissions = {}) => {
-    const menuPermissions = {
-        settigns: [
-            "manage user",
-        ],
-    };
 
     return [
         {
@@ -24,14 +19,14 @@ export const navItems = (permissions = {}) => {
             id: 'settings',
             icon: Settings,
             label: 'Settings',
-            isPermission: menuPermissions.settigns.some((permission) => permissions[permission]),
+            isPermission: true,
             children: [
                 {
                     id: 'user',
                     icon: User2Icon,
                     label: 'User',
                     route: '/users',
-                    isPermission: permissions['manage user']
+                    isPermission: true,
                 },
                 {
                     id: "audit-logs",
